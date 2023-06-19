@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% if department_all_info %}
+    {% for info in department_all_info %}
+    <h1>Department: {{ info.department_name }}</h1>
+    <p>Department ID: {{ info.department_id }}</p>
+    <p>Department Size: {{ info.department_size }}</p>
+    <p>Department Philosophy: {{ info.department_philosophy_id }}</p>
+    {% endfor %}
+    {% else %}
+    <p>There are no created tasks!</p>
+    {% endif %}
+
+
+</body>
+</html>
