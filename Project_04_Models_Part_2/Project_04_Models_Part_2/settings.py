@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     # MY APPS
     'Project_04_Models_Part_2.Departments',
+    'Project_04_Models_Part_2.Employees',
+    'Project_04_Models_Part_2.Projects',
 ]
 
 MIDDLEWARE = [

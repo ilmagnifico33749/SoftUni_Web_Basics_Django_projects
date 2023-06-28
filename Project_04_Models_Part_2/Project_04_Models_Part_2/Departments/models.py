@@ -6,11 +6,16 @@ from django.db import models
 
 
 class Department(models.Model):
+    DEPARTMENT_STATUSES = [
+        ('Active', 'Active'),
+        ('Inactive', 'Inactive'),
+        ('N/A', 'N/A'),
+    ]
 
-    @staticmethod
-    def department_id_setting_function():
-        count = Department.objects.all().count()+1
-        return count
+    # @staticmethod
+    # def department_id_setting_function():
+    #     count_departments = Department.objects.all().count()+1
+    #     return count_departments
 
     department_creation_date = models.DateTimeField(
         verbose_name='Department creation date',
@@ -28,14 +33,14 @@ class Department(models.Model):
         editable=False,
     )
 
-    department_id = models.CharField(
-        verbose_name='Department ID',
-        max_length=10,
-        blank=False,
-        null=False,
-        editable=False,
-        default=department_id_setting_function()
-    )
+    # department_id = models.CharField(
+    #     verbose_name='Department ID',
+    #     max_length=10,
+    #     blank=False,
+    #     null=False,
+    #     editable=False,
+    #     default=department_id_setting_function()
+    # )
 
     department_name = models.CharField(
         verbose_name='Department name',
@@ -54,15 +59,18 @@ class Department(models.Model):
         editable=True
     )
 
-    projects = models.CharField(
-        verbose_name='Projects',
+    department_status = models.CharField(
+        verbose_name='Department Status',
+        max_length=10,
         unique=False,
         blank=False,
         null=False,
         editable=True,
-        choices=
+        choices=DEPARTMENT_STATUSES,
     )
 
 
-
-
+    def __str__(self):
+        # return f"{self.department_id}/{self.department_name}/{self.department_status}"
+        # return f"{self.department_name}/{self.department_status}"
+        return f"{self.department_name}"
