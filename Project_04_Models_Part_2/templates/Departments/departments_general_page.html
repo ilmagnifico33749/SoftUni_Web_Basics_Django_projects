@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Departments General Page</title>
+</head>
+<body>
+
+    <h1>Welcome to the Departments General Page</h1>
+    <p>-----------------------------------------------------------------------------------------------</p>
+    {% for current_deparment_info in all_departments_general_info %}
+        {% for key, value in current_deparment_info.items %}
+            {% if key == 'Department name' %}
+                <h3>{{ key }}: {{ value }}</h3>
+            {% else %}
+                <p>{{ key }}: {{ value }}</p>
+            {% endif %}
+
+        {% endfor %}
+    <p>-----------------------------------------------------------------------------------------------</p>
+    {% endfor %}
+
+
+
+
+{#    {% for department in all_departments %}#}
+{#        <h1>{{ department.department_name }}</h1>#}
+{#        <h3>Email address: {{ department.department_email_address }}</h3>#}
+{#        <p>Email address: {{ department.department_email_address }}</p>#}
+{#        <h3>Department Details</h3>#}
+{#        <p>Department Status: {{ department.department_status }}</p>#}
+{#        <p>Department creation date: {{ department.department_creation_date }}</p>#}
+{#        <p>Department last update date: {{ department.department_last_modified }}</p>#}
+{#        <h3>Department Appointments: </h3>#}
+{#            {% for current_project in projects_appointments %}#}
+{#                {% if department.department_name in current_project.show_all_departments_involved %}#}
+{#                    <p> - Appointed to project: {{ current_project.show_project_name }}</p>#}
+{#                    {% for employee_appointed in current_project.show_all_employees_involved %}#}
+{#                        {% for employee in all_employees_info %}#}
+{#                            {% if employee.full_name == employee_appointed %}#}
+{#                                <p>* Department Employees Appointed: {{ employee.full_name }}</p>#}
+{#                            {% endif %}#}
+{#                        {% endfor %}#}
+{#                    {% endfor %}#}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+{##}
+{#    {% endfor %}#}
+</body>
+</html>

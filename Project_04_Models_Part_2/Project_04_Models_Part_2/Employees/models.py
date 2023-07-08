@@ -134,13 +134,13 @@ class Employee(models.Model):
         null=True
     )
 
-
+    @property
     def full_name(self):
         return f"{self.employee_first_name} {self.employee_last_name}"
 
     def __str__(self):
-        # return f"{self.full_name()}/{self.department_name}/{self.employee_position}/{self.employee_id}"
-        # return f"{self.full_name()}/{self.department_name}/{self.employee_position}"
-        return f"{self.full_name()}/{self.employee_position}"
+        # return f"{self.full_name}/{self.department_name}/{self.employee_position}/{self.employee_id}"
+        # return f"{self.full_name}/{self.department_name}/{self.employee_position}"
+        return f"{self.full_name}/{self.employee_position}"
 
 

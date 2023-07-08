@@ -96,6 +96,8 @@ class Project(models.Model):
         auto_now=datetime.datetime
     )
 
+    # slug = models.SlugField(unique=True, )
+
     # FK
 
     # project_departments_appointed = models.ManyToManyField(
@@ -110,7 +112,9 @@ class Project(models.Model):
     def __str__(self):
         # return f"{Project.project_id}/{Project.project_name}/{Project.project_status}"
         # return f"{Project.project_name}/{Project.project_status}"
-        return f"{self.project_name}/{self.project_status}"
+        # return f"{self.project_name}/{self.project_status}"
+        return f"{self.project_name}"
+
 
 class ProjectAppointmentDepartmentsAndEmployees(models.Model):
     current_project_name = models.ForeignKey(Project, on_delete=models.RESTRICT)
@@ -120,6 +124,9 @@ class ProjectAppointmentDepartmentsAndEmployees(models.Model):
     project_appointed_departments = models.ManyToManyField(Department)
     project_appointed_employees = models.ManyToManyField(Employee)
 
+    def show_project_name(self):
+        return self.current_project_name
+
     def show_all_departments_involved(self):
         return [department.department_name for department in self.project_appointed_departments.all()]
 
@@ -127,4 +134,5 @@ class ProjectAppointmentDepartmentsAndEmployees(models.Model):
         return [self.project_appointed_employees.count()]
 
     def show_all_employees_involved(self):
-        return [employee.full_name() for employee in self.project_appointed_employees.all()]
+        return [employee.full_name for employee in self.project_appointed_employees.all()]
+

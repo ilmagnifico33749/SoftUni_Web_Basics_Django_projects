@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Profile</title>
+</head>
+<body>
+    <h1>Welcome to the Employee Profile Page</h1>
+    <p>-------------------------------------------</p>
+    {% for current_employee_info in all_employees_info %}
+        {% for key, value in current_employee_info.items %}
+            {% if key == 'Employee full name' %}
+                <h3>{{ key }}: {{ value }}</h3>
+            {% else %}
+                <p>{{ key }}: {{ value }}</p>
+            {% endif %}
+        {% endfor %}
+        <p>-------------------------------------------</p>
+    {% endfor %}
+
+</body>
+</html>

@@ -1,5 +1,6 @@
-from django.urls import path
+from django.urls import path, include
+from Project_04_Models_Part_2.Projects import views
 
 urlpatterns = [
-    path('', ),
+    path('', views.projects_general_page),
 ]

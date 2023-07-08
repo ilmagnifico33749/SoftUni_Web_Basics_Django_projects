@@ -17,9 +17,11 @@ class EmployeeAdmin(admin.ModelAdmin):
 class DepartmentAdmin(admin.ModelAdmin):
     list_display = ['department_name', 'department_status']
 
+
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ['project_name', 'project_status']
+
 
 @admin.register(ProjectAppointmentDepartmentsAndEmployees)
 class ProjectAppointmentDepartmentsAndEmployees(admin.ModelAdmin):
