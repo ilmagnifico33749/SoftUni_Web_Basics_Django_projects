@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% if success_message %}
+        <div class='success-message'{{ success_message }}></div>
+    {% endif %}
+
+    <h1>The profile has been created successfully!</h1>
+
+    <a href="{% url 'employee_profile_creation' %}">Create another profile</a>
+
+    <a href="{% url 'employees_show_all_users' %}">Back to All Users Page</a>
+
+</body>
+</html>

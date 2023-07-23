@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Profile Editing</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        {%  csrf_token %}
+        {% for field in form %}
+            <div>
+                {{ field.label_tag }}: {{ field }}
+            </div>
+        {% endfor %}
+
+        <p>
+            <button type="submit">Update</button>
+        </p>
+
+
+    </form>
+    <p>
+        <a href="{{ 'employee_absolute_url' }}"> Show User Profile via Abs Url</a>
+    </p>
+
+    <p>
+        <a href="{% url 'employees_show_all_users' %}">Back to All Users Page</a>
+    </p>
+
+</body>
+</html>

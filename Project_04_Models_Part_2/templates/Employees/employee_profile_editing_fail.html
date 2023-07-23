@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Updating Fail</title>
+</head>
+<body>
+    {{ fail_message }}
+
+    <form method="post" enctype="multipart/form-data">
+        {%  csrf_token %}
+        {% for field in form %}
+            <div>
+                {{ field.label_tag }}: {{ field }}
+            </div>
+        {% endfor %}
+        <button type="submit">Update again</button>
+    </form>
+
+    <a href="{% url 'employees_show_all_users' %}">Back to All Users page</a>
+
+</body>
+</html>

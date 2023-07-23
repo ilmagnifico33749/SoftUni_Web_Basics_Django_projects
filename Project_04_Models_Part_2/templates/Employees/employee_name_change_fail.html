@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Name Change Fail</title>
+</head>
+<body>
+        <h1>Employee Name Change</h1>
+        <h2>{{ fail_message }}</h2>
+
+
+    <form method="post" action={% url 'employee_name_change' employee_user_personal_id%}>
+
+        {% csrf_token %}
+        <p>
+            {{ form.non_field_errors }}
+        </p>
+
+        <p>
+            <h4>Employee current first name: {{ employee_current_first_name }}
+            </h4>
+        </p>
+
+        <p>{{ form.employee_new_first_name.label }}
+            {{ form.employee_new_first_name }}
+            {{ form.employee_new_first_name.errors }}
+        </p>
+
+        <p>
+            <h4>
+        Employee current last name: {{ employee_current_last_name }}
+            </h4>
+        </p>
+
+        <p>{{ form.employee_new_last_name.label }}
+            {{ form.employee_new_last_name }}
+            {{ form.employee_new_last_name.error_messages }}
+        </p>
+
+        <button type="submit">Update</button>
+
+    </form>
+
+    <a href="{% url 'employee_show_user_profile' employee_user_personal_id %}">Show user profile</a>
+    <a href="{% url 'employees_show_all_users' %}">Back to All Users Page</a>
+
+</body>
+</html>

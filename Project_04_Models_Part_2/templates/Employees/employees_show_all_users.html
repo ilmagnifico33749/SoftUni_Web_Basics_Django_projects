@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Profile</title>
+</head>
+<body>
+    <h1>Welcome to the Show All Employee Users Profile Page</h1>
+    <a href="{% url 'employee_profile_creation' %}">Create a new profile</a>
+    <a href="{% url 'employees_home_page' %}">Back to Employees Home Page</a>
+    <p>-----------------------------------------------------------------------------------------------</p>
+    {% for current_employee_info in all_employees_info %}
+        {% for key, value in current_employee_info.items %}
+            {% if key == 'Employee_full_name' %}
+                <h3>{{ key }}: {{ value }}</h3>
+
+            {% elif key != 'Employee_user_personal_ID' and key != 'Employee_slug' and key != 'Employee_absolute_URL' %}
+                <p>{{ key }}: {{ value }}</p>
+
+            {% elif key == 'Employee_absolute_URL' %}
+                {% if value %}
+                    <a href="{{ value }}">Profile URL</a>
+                {% endif %}
+
+            {% elif key == 'Employee_user_personal_ID' %}
+                {% with employee_user_personal_id=value %}
+                    {% if employee_user_personal_id %}
+                        <a href="{% url 'employee_show_user_profile' employee_user_personal_id %}">Show user profile</a>
+                        <a href="{% url 'employee_profile_editing' employee_user_personal_id %}">Edit profile</a>
+                        <a href="{%  url 'employee_profile_deleting' employee_user_personal_id %}">Delete profile</a>
+                    {% endif %}
+                {%  endwith %}
+
+            {% elif key == 'Employee_absolute_URL' %}
+                {% with employee_abs_url=value %}
+                    {% if employee_abs_url %}
+                        <a href="{{ employee_abs_url }}"> Show User Profile via Abs Url</a>
+                    {% endif %}
+                {% endwith %}
+{##}
+            {% endif %}
+
+        {% endfor %}
+        <p>-----------------------------------------------------------------------------------------------</p>
+    {% endfor %}
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Profile Creation</title>
+</head>
+<body>
+    <form method="post">
+        {%  csrf_token %}
+        {% for field in form %}
+            <div>
+                {{ field.label_tag }}: {{ field }}
+            </div>
+        {% endfor %}
+{#        {{ form.fie }}#}
+        <button type="submit">Create profile</button>
+    </form>
+
+    <a href="{% url 'employees_show_all_users' %}">Back to All Users Page</a>
+
+
+</body>
+</html>

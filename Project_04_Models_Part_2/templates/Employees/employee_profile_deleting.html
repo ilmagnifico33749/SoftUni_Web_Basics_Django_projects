@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deleting profile</title>
+</head>
+<body>
+
+    <h1>Are you sure that you want to delete the profile of {{ Employee_name }}?</h1>
+
+    <form method="post" action="{% url 'employee_profile_deleting' employee_user_personal_id=employee_user_personal_id %}">
+        {% csrf_token %}
+        {{ form }}
+
+        <button type="submit"> Yes. Delete </button>
+
+    </form>
+
+    <a href="{% url 'employees_show_all_users' %}">No. Back to All Users Page</a>
+
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Name Change Success</title>
+</head>
+<body>
+
+    <h1>{{ success_message }}</h1>
+
+    <h2>Employee Names</h2>
+
+    <h2>Do you want to change the names again?</h2>
+    <form method="post" action={% url 'employee_name_change' employee_user_personal_id%}>
+
+        {% csrf_token %}
+        <h3>First name</h3>
+        <p>Employee old first name: {{ employee_current_first_name }}</p>
+        <p>Employee new first name: {{ employee_new_first_name }}</p>
+        <p>{{ empty_form.employee_new_first_name.label }} {{ form.employee_new_first_name }}</p>
+
+            <h3>Last name</h3>
+        <p>Employee old last name: {{ employee_current_last_name }}</p>
+        <p>Employee new last name: {{ employee_new_last_name }}</p>
+        <p>{{ empty_form.employee_new_last_name.label }} {{ form.employee_new_last_name }}</p>
+
+        <button type="submit">Update again</button>
+
+    </form>
+
+    <a href="{% url 'employee_show_user_profile' employee_user_personal_id %}">Show user profile</a>
+    <a href="{% url 'employees_show_all_users' %}">Back to All Users Page</a>
+
+</body>
+</html>

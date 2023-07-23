@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Profile Page</title>
+</head>
+<body>
+    <h1>Welcome to the Show Employee User Profile Page</h1>
+    <a href="{% url 'employee_profile_creation' %}">Create a new profile</a>
+    <p>-----------------------------------------------------------------------------------------------</p>
+    {% for key, value in current_employee_info.items %}
+
+        {% if key == 'Employee_full_name' %}
+            <h3>{{ key }}: {{ value }}</h3>
+
+        {% elif key != 'Employee_user_personal_ID' and key != 'Employee_photo' and key != 'Employee_absolute_URL' and key != 'Employee_Slug'%}
+            <p>{{ key }}: {{ value }}</p>
+
+        {% elif key == 'Employee_user_personal_ID' %}
+            {% with employee_user_personal_id=value %}
+                {% if employee_user_personal_id %}
+                    <p>
+                        <a href="{% url 'employee_profile_editing' employee_user_personal_id %}">Edit profile</a>
+                        <a href="{%  url 'employee_profile_deleting' employee_user_personal_id %}">Delete profile</a>
+                        <a href="{% url 'employees_show_all_users' %}">Back to All Users Page</a>
+                        <a href="{% url 'employee_name_change' employee_user_personal_id %}">Change user name</a>
+                    </p>
+                {% endif %}
+            {%  endwith %}
+
+        {% elif key == 'Employee_photo' %}
+            {% with employee_photo=value  %}
+                {% if employee_photo %}
+                    <p>
+                        <img width="500" src="{{ employee_photo.url }}" alt="{{ all_employees_info.Employee_full_name }}'s photo">
+                    </p>
+                {% else %}
+                    {{ "N/A" }}
+                {% endif %}
+            
+            {% endwith %}
+        
+
+        {% endif %}
+    {% endfor %}
+
+{#        <a href="{% url 'employee_profile_editing' employee_user_personal_id %}">Edit profile</a>#}
+{#        <a href="{%  url 'employee_profile_deleting' employee_user_personal_id %}">Delete profile</a>#}
+{#        <a href="{% url 'employees_show_all_users' %}">Back to All Users Page</a>#}
+
+    <p>-----------------------------------------------------------------------------------------------</p>
+
+</body>
+</html>
+
