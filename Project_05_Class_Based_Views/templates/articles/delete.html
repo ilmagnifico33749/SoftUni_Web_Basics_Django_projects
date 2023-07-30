@@ -1,0 +1,10 @@
+<form action="{% url 'delete_article' article.pk %}"
+        method="post">
+
+    {{ form }}
+
+    <button>Delete</button>
+    <a href="{% url 'list_articles' %}">Back to all articles</a>
+
+    {% csrf_token %}
+</form>
